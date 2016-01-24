@@ -1,10 +1,7 @@
-'use strict';
-
-var React = require('react-native');
-var {
+import React, {
   AppRegistry
-} = React;
+} from 'react-native';
 
-var KeepTalkingSolver = require('./KeepTalkingSolver');
+import KeepTalkingSolver from './KeepTalkingSolver';
 
 AppRegistry.registerComponent('keep_talking_solver', () => KeepTalkingSolver);
