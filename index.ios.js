@@ -2,6 +2,6 @@ import React, {
   AppRegistry
 } from 'react-native';
 
-import KeepTalkingSolver from './KeepTalkingSolver';
+import App from './App';
 
-AppRegistry.registerComponent('keep_talking_solver', () => KeepTalkingSolver);
+AppRegistry.registerComponent('keep_talking_solver', () => App);

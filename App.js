@@ -4,7 +4,7 @@ import React, {
 
 import ModulePicker from './ModulePicker';
 
-class KeepTalkingSolver extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <Navigator
@@ -21,4 +21,4 @@ class KeepTalkingSolver extends React.Component {
   }
 };
 
-module.exports = KeepTalkingSolver;
+module.exports = App;
