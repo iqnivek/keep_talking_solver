@@ -1,9 +1,11 @@
 import React, {
   Navigator,
+  View,
 } from 'react-native';
 
-import ModulePicker from './ModulePicker';
 import ComplicatedWires from './ComplicatedWires';
+import Header from './Header';
+import ModulePicker from './ModulePicker';
 
 class App extends React.Component {
   render() {
@@ -18,7 +20,12 @@ class App extends React.Component {
           if (route.component === 'ModulePicker') {
             return <ModulePicker navigator={navigator} />;
           } else if (route.component === 'ComplicatedWires') {
-            return <ComplicatedWires />;
+            return (
+              <View>
+                <Header navigator={navigator} />
+                <ComplicatedWires />
+              </View>
+            );
           } else {
             throw 'Unknown component name';
           }
