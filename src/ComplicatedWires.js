@@ -1,23 +1,24 @@
-var React = require('react-native');
-var {
-  Switch
-} = React;
+import React, {
+  Switch,
+  Text,
+  View,
+} from 'react-native';
 
 class ComplicatedWires extends React.Component {
   render() {
     return (
-      <div>
-        Is last digit serial even?
+      <View>
+        <Text>Is last digit serial even?</Text>
         <Switch value={this.props.isLastSerialDigitEven} />
 
-        Has parallel port?
+        <Text>Has parallel port?</Text>
         <Switch value={this.props.hasParallelPort} />
 
-        Has 2 or more batteries?
+        <Text>Has 2 or more batteries?</Text>
         <Switch value={this.props.hasMoreThanOneBattery} />
-      </div>
+      </View>
     );
   }
 }
 
-module.exports = ComplicatedWires;
+export default ComplicatedWires;

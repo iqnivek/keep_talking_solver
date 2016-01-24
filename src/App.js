@@ -3,6 +3,7 @@ import React, {
 } from 'react-native';
 
 import ModulePicker from './ModulePicker';
+import ComplicatedWires from './ComplicatedWires';
 
 class App extends React.Component {
   render() {
@@ -11,11 +12,17 @@ class App extends React.Component {
         ref="navigator"
         style={{flex: 1}}
         initialRoute={{
-          type: 'ModulePicker'
+          component: 'ModulePicker',
         }}
-        renderScene={(route, navigator) =>
-          <ModulePicker />
-        }
+        renderScene={(route, navigator) => {
+          if (route.component === 'ModulePicker') {
+            return <ModulePicker navigator={navigator} />;
+          } else if (route.component === 'ComplicatedWires') {
+            return <ComplicatedWires />;
+          } else {
+            throw 'Unknown component name';
+          }
+        }}
       />
     );
   }

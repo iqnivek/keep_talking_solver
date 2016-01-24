@@ -7,7 +7,7 @@ import React, {
 class ModulePickerTile extends React.Component {
   render() {
     return (
-      <TouchableHighlight>
+      <TouchableHighlight onPress={this.props.onPress}>
         <Text>{this.props.name}</Text>
       </TouchableHighlight>
     );
