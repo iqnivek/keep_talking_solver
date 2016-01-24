@@ -1,20 +1,21 @@
-var React = require('react-native');
-var {
-  NavigatorIOS
-} = React;
+import React, {
+  Navigator,
+} from 'react-native';
 
-var ComplicatedWires = require('./ComplicatedWires');
+import ModulePicker from './ModulePicker';
 
 class KeepTalkingSolver extends React.Component {
   render() {
     return (
-      <NavigatorIOS
+      <Navigator
         ref="navigator"
         style={{flex: 1}}
         initialRoute={{
-          title: 'Keep Talking Solver',
-          component: ComplicatedWires,
+          type: 'ModulePicker'
         }}
+        renderScene={(route, navigator) =>
+          <ModulePicker />
+        }
       />
     );
   }
