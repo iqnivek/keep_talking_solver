@@ -8,28 +8,30 @@ import Header from './Header';
 import ModulePicker from './ModulePicker';
 
 class App extends React.Component {
+  getComponentByName(route, navigator) {
+    if (route.componentName === 'ModulePicker') {
+      return <ModulePicker navigator={navigator} />;
+    } else if (route.componentName === 'ComplicatedWires') {
+      return <ComplicatedWires />;
+    } else {
+      throw 'Unknown component name';
+    }
+  }
+
   render() {
     return (
       <Navigator
         ref="navigator"
         style={{flex: 1}}
         initialRoute={{
-          component: 'ModulePicker',
+          componentName: 'ModulePicker',
         }}
-        renderScene={(route, navigator) => {
-          if (route.component === 'ModulePicker') {
-            return <ModulePicker navigator={navigator} />;
-          } else if (route.component === 'ComplicatedWires') {
-            return (
-              <View>
-                <Header navigator={navigator} />
-                <ComplicatedWires />
-              </View>
-            );
-          } else {
-            throw 'Unknown component name';
-          }
-        }}
+        renderScene={(route, navigator) => (
+          <View>
+            <Header route={route} navigator={navigator} />
+            {this.getComponentByName(route, navigator)}
+          </View>
+        )}
       />
     );
   }

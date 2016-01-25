@@ -4,6 +4,7 @@ import React, {
 } from 'react-native';
 
 import ModulePickerTile from './ModulePickerTile';
+import styles from './styles';
 
 class ModulePicker extends React.Component {
   constructor(props) {
@@ -12,18 +13,16 @@ class ModulePicker extends React.Component {
     this.onPressTile = this.onPressTile.bind(this);
   }
 
-  onPressTile(component) {
+  onPressTile(componentName) {
     this.props.navigator.push({
-      component: component,
+      componentName: componentName,
     });
   }
 
   render() {
     return (
       <View>
-        <Text>Keep Talking Solver</Text>
-
-        <View>
+        <View style={styles.flexRow}>
           <ModulePickerTile name="Simple Wires" />
           <ModulePickerTile name="The Button" />
           <ModulePickerTile name="Complicated Wires" onPress={() => this.onPressTile('ComplicatedWires')} />

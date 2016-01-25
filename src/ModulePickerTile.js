@@ -4,11 +4,17 @@ import React, {
   View,
 } from 'react-native';
 
+import styles from './styles';
+
 class ModulePickerTile extends React.Component {
   render() {
     return (
-      <TouchableHighlight onPress={this.props.onPress}>
-        <Text>{this.props.name}</Text>
+      <TouchableHighlight
+        style={styles.tile}
+        onPress={this.props.onPress}
+        underlayColor="#fbb"
+      >
+        <Text style={styles.textCenter}>{this.props.name}</Text>
       </TouchableHighlight>
     );
   }
