@@ -45,7 +45,7 @@ class App extends React.Component {
     return (
       <Navigator
         ref="navigator"
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         initialRoute={{
           componentName: 'ModulePicker',
         }}
@@ -58,6 +58,6 @@ class App extends React.Component {
       />
     );
   }
-};
+}
 
 module.exports = App;

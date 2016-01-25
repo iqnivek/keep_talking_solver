@@ -20,7 +20,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   tile: {
-    padding: 20,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 48,
+    paddingBottom: 8,
     flex: 1,
   },
 });
