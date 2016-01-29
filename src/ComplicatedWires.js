@@ -6,6 +6,7 @@ import React, {
 import _ from 'lodash';
 
 import BooleanQuestion from './BooleanQuestion';
+import QuestionGroup from './QuestionGroup';
 
 const complicatedWiresConfig = [
   // star,  red,    blue,   LED,    decision
@@ -49,8 +50,8 @@ class ComplicatedWires extends React.Component {
   shouldCutWire() {
     const { star, red, blue, led } = this.state;
 
-    const row = _.find(complicatedWiresConfig, (row) => {
-      const [_star, _red, _blue, _led, decision] = row;
+    const row = _.find(complicatedWiresConfig, (_row) => {
+      const [_star, _red, _blue, _led, decision] = _row;
 
       return (_star === star &&
               _red  === red  &&
@@ -65,7 +66,7 @@ class ComplicatedWires extends React.Component {
   render() {
     return (
       <View>
-        <View>
+        <QuestionGroup label="About the bomb">
           <BooleanQuestion
             text="Is last digit serial even?"
             value={this.props.settings.isLastSerialDigitEven}
@@ -77,9 +78,9 @@ class ComplicatedWires extends React.Component {
 
           <Text>Has 2 or more batteries?</Text>
           <Switch value={this.props.settings.hasMoreThanOneBattery} />
-        </View>
+        </QuestionGroup>
 
-        <View>
+        <QuestionGroup label="About the wire">
           <BooleanQuestion
             text="Is LED lit?"
             value={this.state.led}
@@ -103,7 +104,7 @@ class ComplicatedWires extends React.Component {
             value={this.state.star}
             onValueChange={(value) => this.onUpdate({ star: value })}
           />
-        </View>
+        </QuestionGroup>
 
         <View>
           <Text>{this.shouldCutWire()}</Text>

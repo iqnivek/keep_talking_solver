@@ -1,7 +1,6 @@
 import React, {
   Text,
   TouchableHighlight,
-  View,
 } from 'react-native';
 
 import styles from './styles';

@@ -37,7 +37,7 @@ class App extends React.Component {
         />
       );
     } else {
-      throw 'Unknown component name';
+      throw { error: 'Unknown component name' };
     }
   }
 

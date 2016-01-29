@@ -1,4 +1,4 @@
-import React, {
+import {
   StyleSheet
 } from 'react-native';
 
@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   header: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  navbar: {
+    backgroundColor: 'red',
     paddingTop: 30,
     paddingBottom: 20,
   },

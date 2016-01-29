@@ -14,12 +14,16 @@ class Header extends React.Component {
     return this.props.route.componentName === 'ModulePicker';
   }
 
+  onPress() {
+    this.props.navigator.pop();
+  }
+
   renderBackButton() {
     if (this.isHome()) {
       return null;
     }
     return (
-      <TouchableHighlight onPress={() => this.props.navigator.pop()}>
+      <TouchableHighlight onPress={this.onPress}>
         <Text style={styles.textWhite}>Back</Text>
       </TouchableHighlight>
     );
@@ -27,7 +31,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <View style={[styles.header, styles.backgroundRed]}>
+      <View style={[styles.navbar]}>
         {this.renderBackButton()}
 
         <Text style={[styles.textWhite, styles.textCenter]}>Keep Talking Solver</Text>
