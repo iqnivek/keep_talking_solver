@@ -86,11 +86,23 @@ class ComplicatedWires extends React.Component {
             onValueChange={(value) => this.onUpdate({ led: value })}
           />
 
-          <Text>Does wire have any red?</Text>
+          <BooleanQuestion
+            text="Does the wire have any red?"
+            value={this.state.red}
+            onValueChange={(value) => this.onUpdate({ red: value })}
+          />
 
-          <Text>Does wire have any blue?</Text>
+          <BooleanQuestion
+            text="Does the wire have any blue?"
+            value={this.state.blue}
+            onValueChange={(value) => this.onUpdate({ blue: value })}
+          />
 
-          <Text>Does wire have a star?</Text>
+          <BooleanQuestion
+            text="Does the wire have a star?"
+            value={this.state.star}
+            onValueChange={(value) => this.onUpdate({ star: value })}
+          />
         </View>
 
         <View>
