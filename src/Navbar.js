@@ -8,7 +8,13 @@ import styles from './styles';
 
 // TODO add small bomb image next to title
 
-class Header extends React.Component {
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onPress = this.onPress.bind(this);
+  }
+
   isHome() {
     // TODO refactor
     return this.props.route.componentName === 'ModulePicker';
@@ -40,4 +46,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default Navbar;

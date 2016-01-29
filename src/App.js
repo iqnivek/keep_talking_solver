@@ -5,7 +5,7 @@ import React, {
 import update from 'react-addons-update';
 
 import ComplicatedWires from './ComplicatedWires';
-import Header from './Header';
+import Navbar from './Navbar';
 import ModulePicker from './ModulePicker';
 
 class App extends React.Component {
@@ -51,7 +51,7 @@ class App extends React.Component {
         }}
         renderScene={(route, navigator) => (
           <View>
-            <Header route={route} navigator={navigator} />
+            <Navbar route={route} navigator={navigator} />
             {this.getComponentByName(route, navigator)}
           </View>
         )}
