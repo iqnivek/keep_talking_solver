@@ -8,6 +8,16 @@ import _ from 'lodash';
 import BooleanQuestion from './BooleanQuestion';
 import QuestionGroup from './QuestionGroup';
 
+function mapTernaryValue(value, mapping) {
+  if (value === true) {
+    return mapping['true'];
+  } else if (value === false) {
+    return mapping['false'];
+  } else {
+    return mapping['null'];
+  }
+}
+
 const complicatedWiresConfig = [
   // star,  red,    blue,   LED,    decision
   [ false,  false,  false,  false,  'C' ],
@@ -59,8 +69,36 @@ class ComplicatedWires extends React.Component {
               _led  === led);
     });
 
-    const [ , , , , decision] = row;
-    return decision;
+    const [ , , , , decisionCode] = row;
+    return this.getDecisionText(decisionCode);
+  }
+
+  getDecisionText(decisionCode) {
+    const {
+      isLastSerialDigitEven,
+      hasParallelPort,
+      hasMoreThanOneBattery,
+    } = this.props.settings;
+
+    return {
+      C: 'Cut the wire',
+      D: 'Do not cut the wire',
+      S: mapTernaryValue(isLastSerialDigitEven, {
+        true: 'Cut the wire',
+        false: 'Do not cut the wire',
+        null: 'Cut the wire if last digit of the serial number is even',
+      }),
+      P: mapTernaryValue(hasParallelPort, {
+        true: 'Cut the wire',
+        false: 'Do not cut the wire',
+        null: 'Cut the wire if the bomb has a parallel port',
+      }),
+      B: mapTernaryValue(hasMoreThanOneBattery, {
+        true: 'Cut the wire',
+        false: 'Do not cut the wire',
+        null: 'Cut the wire if the bomb has two or more batteries'
+      }),
+    }[decisionCode];
   }
 
   render() {
