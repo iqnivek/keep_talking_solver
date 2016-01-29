@@ -1,11 +1,13 @@
 import React, {
   Navigator,
+  Text,
   View,
+  TouchableHighlight,
 } from 'react-native';
 import update from 'react-addons-update';
 
+import styles from './styles';
 import ComplicatedWires from './ComplicatedWires';
-import Navbar from './Navbar';
 import ModulePicker from './ModulePicker';
 
 class App extends React.Component {
@@ -37,24 +39,35 @@ class App extends React.Component {
         />
       );
     } else {
-      throw { error: 'Unknown component name' };
+      throw 'Unknown component name';
     }
   }
 
   render() {
+    const routeMapper = {
+      LeftButton: (route, navigator, index, navState) => {
+        return (index > 0) ? (
+          <TouchableHighlight onPress={() => navigator.pop()}>
+            <Text style={styles.textWhite}>Back</Text>
+          </TouchableHighlight>
+        ) : null;
+      },
+      RightButton: () => null,
+      Title: (route, navigator, index, navState) => <Text style={[styles.header, styles.textWhite]}>{route.title}</Text>,
+    };
+
     return (
       <Navigator
         ref="navigator"
         style={{ flex: 1 }}
         initialRoute={{
+          title: 'Keep Talking Solver',
           componentName: 'ModulePicker',
         }}
-        renderScene={(route, navigator) => (
-          <View>
-            <Navbar route={route} navigator={navigator} />
-            {this.getComponentByName(route, navigator)}
-          </View>
-        )}
+        renderScene={(route, navigator) => <View style={{ marginTop: 80 }}>{this.getComponentByName(route, navigator)}</View>}
+        navigationBar={
+          <Navigator.NavigationBar style={styles.navbar} routeMapper={routeMapper} />
+        }
       />
     );
   }

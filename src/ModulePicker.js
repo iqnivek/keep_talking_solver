@@ -13,10 +13,8 @@ class ModulePicker extends React.Component {
     this.onPressTile = this.onPressTile.bind(this);
   }
 
-  onPressTile(componentName) {
-    this.props.navigator.push({
-      componentName: componentName,
-    });
+  onPressTile(route) {
+    this.props.navigator.push(route);
   }
 
   render() {
@@ -25,7 +23,7 @@ class ModulePicker extends React.Component {
         <View style={styles.flexRow}>
           <ModulePickerTile name="Simple Wires" />
           <ModulePickerTile name="The Button" />
-          <ModulePickerTile name="Complicated Wires" onPress={() => this.onPressTile('ComplicatedWires')} />
+          <ModulePickerTile name="Complicated Wires" onPress={() => this.onPressTile({ title: 'Complicated Wires', componentName: 'ComplicatedWires' })} />
         </View>
       </View>
     );

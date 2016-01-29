@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   navbar: {
     backgroundColor: 'red',
     paddingTop: 30,
-    paddingBottom: 20,
   },
   textWhite: {
     color: '#fff',
