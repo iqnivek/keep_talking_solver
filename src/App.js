@@ -8,6 +8,7 @@ import update from 'react-addons-update';
 
 import styles from './styles';
 import ComplicatedWires from './ComplicatedWires';
+import TheButton from './TheButton';
 import ModulePicker from './ModulePicker';
 
 class App extends React.Component {
@@ -34,6 +35,13 @@ class App extends React.Component {
     } else if (route.componentName === 'ComplicatedWires') {
       return (
         <ComplicatedWires
+          settings={this.state.settings}
+          onUpdateSettings={this.onUpdateSettings}
+        />
+      );
+    } else if (route.componentName === 'TheButton') {
+      return (
+        <TheButton
           settings={this.state.settings}
           onUpdateSettings={this.onUpdateSettings}
         />
@@ -73,4 +81,4 @@ class App extends React.Component {
   }
 }
 
-module.exports = App;
+export default App;

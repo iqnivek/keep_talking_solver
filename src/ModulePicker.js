@@ -22,7 +22,7 @@ class ModulePicker extends React.Component {
       <View>
         <View style={styles.flexRow}>
           <ModulePickerTile name="Simple Wires" />
-          <ModulePickerTile name="The Button" />
+          <ModulePickerTile name="The Button" onPress={() => this.onPressTile({ title: 'The Button', componentName: 'TheButton' })} />
           <ModulePickerTile name="Complicated Wires" onPress={() => this.onPressTile({ title: 'Complicated Wires', componentName: 'ComplicatedWires' })} />
         </View>
       </View>
